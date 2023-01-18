@@ -5,15 +5,22 @@
 	var pincel = tela.getContext("2d");
 
 
-
+/*
 // Goleiro Negro
-
 	pincel.fillStyle = "black";
 	pincel.fillRect(10, 190, 6, 40);
 	pincel.fill();
 
+
+// Goleiro Branco
+	pincel.fillStyle = "white";
+	pincel.fillRect(580, 190, 6, 40);
+	pincel.fill();
+*/
 var  y = 50;
 var  z = 50;
+//var cima = 38;
+//var baixo = 40;
 
 function jogadores(){
 		var tela = document.querySelector("canvas");
@@ -83,11 +90,12 @@ function jogadores(){
 			pincel.fillRect(420,  z+200, 6, 40);
 			pincel.fill();
 
-			
+		/*	
 		// Goleiro Branco
 			pincel.fillStyle = "white";
 			pincel.fillRect(580, 190, 6, 40);
 			pincel.fill();
+		*/	
 
 }
 
@@ -111,38 +119,11 @@ function jogadores(){
 			movimentoBranco = 1;
 		}
 
-
 		jogadores();
 		y = y + altura;
 		z = z + movimentoBranco;
 	}
 
-	
-	
-
-	function jogadoresBrancos(){
-		
-		//Jogadores de linha brancos
-
-			pincel.fillStyle = "white";
-			pincel.fillRect(420, 150, 6, 40);
-			pincel.fill();
-
-			pincel.fillStyle = "white";
-			pincel.fillRect(420, 250, 6, 40);
-			pincel.fill();
-
-			pincel.fillStyle = "white";
-			pincel.fillRect(420, 50, 6, 40);
-			pincel.fill();
-
-
-		// Goleiro Branco
-			pincel.fillStyle = "white";
-			pincel.fillRect(580, 190, 6, 40);
-			pincel.fill();
-
-	}
 	
 
 	setInterval(atualizaTela, 10);
