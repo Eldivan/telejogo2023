@@ -4,23 +4,19 @@
 	var tela =document.querySelector("canvas");
 	var pincel = tela.getContext("2d");
 
-
-/*
-// Goleiro Negro
-	pincel.fillStyle = "black";
-	pincel.fillRect(10, 190, 6, 40);
-	pincel.fill();
-
-
-// Goleiro Branco
-	pincel.fillStyle = "white";
-	pincel.fillRect(580, 190, 6, 40);
-	pincel.fill();
-*/
 var  y = 50;
 var  z = 50;
-//var cima = 38;
-//var baixo = 40;
+var alturaGoleiro = 190;
+var posicaoGoleiro = 580;
+var cima = 38;
+var baixo = 40;
+var tx  = 10;
+
+var alturaGoleiroNegro = 190;
+var posicaoGoleiroNegro = 10;
+var w = 87;
+var s = 83;
+var taxa = 10;
 
 function jogadores(){
 		var tela = document.querySelector("canvas");
@@ -60,7 +56,7 @@ function jogadores(){
 	// Goleiro Negro
 
 		pincel.fillStyle = "black";
-		pincel.fillRect(10, 190, 6, 40);
+		pincel.fillRect(posicaoGoleiroNegro, alturaGoleiroNegro, 6, 40);
 		pincel.fill();
 		
 	// Jogadores negros	
@@ -90,14 +86,14 @@ function jogadores(){
 			pincel.fillRect(420,  z+200, 6, 40);
 			pincel.fill();
 
-		/*	
 		// Goleiro Branco
 			pincel.fillStyle = "white";
-			pincel.fillRect(580, 190, 6, 40);
+			pincel.fillRect(posicaoGoleiro, alturaGoleiro, 6, 40);
 			pincel.fill();
-		*/	
+			
 
 }
+
 
 	function limpaTela(){
 		pincel.clearRect(0,0, 600, 400);
@@ -118,16 +114,37 @@ function jogadores(){
 		}else if (z < 40) {
 			movimentoBranco = 1;
 		}
-
 		jogadores();
+
 		y = y + altura;
 		z = z + movimentoBranco;
 	}
 
-	
-
 	setInterval(atualizaTela, 10);
-	jogadoresNegros();
-	
+
+
+	function controleGoleiro(evento) {
+
+        if(evento.keyCode == cima && alturaGoleiro >= 20) {
+
+            alturaGoleiro = alturaGoleiro - taxa;
+
+        } else if (evento.keyCode == baixo && alturaGoleiro <= 340) {
+
+            alturaGoleiro = alturaGoleiro + taxa;
+
+        } else if (evento.keyCode == w && alturaGoleiroNegro >= 20) {
+
+            alturaGoleiroNegro = alturaGoleiroNegro - tx;
+
+        } else if (evento.keyCode == s && alturaGoleiroNegro <= 340) {
+
+            alturaGoleiroNegro = alturaGoleiroNegro + tx;
+
+        } 
+    }
+
+   document.onkeydown = controleGoleiro;
+
 
 </script>
